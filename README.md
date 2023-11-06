@@ -1,24 +1,35 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This project is a way for me to deepen my understanding of background jobs. If you want to set up a simple background job using Sidekiq, follow the steps below.
 
-Things you may want to cover:
+# Open up your terminal and type the command below. I added a database just incase I want to store things in the future.
 
-* Ruby version
+rails new background-job-app --database:postgresql
 
-* System dependencies
+## go into your projects directory
 
-* Configuration
+Cd background-job-app
 
-* Database creation
 
-* Database initialization
+# Set up database and run migrations
+rails db:setup
+rails db:migrate
 
-* How to run the test suite
+## Add sidekiq 
+bundle add sidekiq
 
-* Services (job queues, cache servers, search engines, etc.)
+## if your still in your terminal, type the following command, it will open your project in your IDE
+code .
 
-* Deployment instructions
+## Go to your Gem file and make sure sidekiq is in there, if not add the following line to your Gem file.
 
-* ...
+gem 'sidekiq'
+
+
+## This command will generate file as well as tests\
+
+rails generate sidekiq: job hard
+
+
+
+
